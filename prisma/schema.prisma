@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Agency {
+  id              String    @id @default(cuid())
+  name            String
+  state           String?
+  stateCode       String?   @map("state_code")
+  type            String?
+  population      Int?
+  website         String?
+  totalSchools    Int?      @map("total_schools")
+  totalStudents   Int?      @map("total_students")
+  mailingAddress  String?   @map("mailing_address")
+  gradeSpan       String?   @map("grade_span")
+  locale          String?
+  csaCbsa         String?   @map("csa_cbsa")
+  domainName      String?   @map("domain_name")
+  physicalAddress String?   @map("physical_address")
+  phone           String?
+  status          String?
+  studentTeacherRatio Float? @map("student_teacher_ratio")
+  supervisoryUnion String?  @map("supervisory_union")
+  county          String?
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+  contacts        Contact[]
+
+  @@map("agencies")
+}
+
+model Contact {
+  id              String   @id @default(cuid())
+  firstName       String?  @map("first_name")
+  lastName        String?  @map("last_name")
+  email           String?
+  phone           String?
+  title           String?
+  emailType       String?  @map("email_type")
+  contactFormUrl  String?  @map("contact_form_url")
+  department      String?
+  agencyId        String?  @map("agency_id")
+  firmId          String?  @map("firm_id")
+  agency          Agency?  @relation(fields: [agencyId], references: [id])
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  @@map("contacts")
+}
+
+model DailyUsage {
+  id                  String    @id @default(cuid())
+  userId              String    @map("user_id")
+  date                DateTime  @default(now())
+  contactViews        Int       @default(0) @map("contact_views")
+  viewedPages         String    @default("") @map("viewed_pages") // Comma-separated list of page numbers viewed this hour
+  allTimeViewedPages  String    @default("") @map("all_time_viewed_pages") // All pages ever viewed (persists across resets)
+  limitReachedAt      DateTime? @map("limit_reached_at") // When the 50 view limit was reached
+  
+  @@unique([userId, date])
+  @@map("daily_usage")
+}
