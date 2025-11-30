@@ -173,7 +173,7 @@ flowchart TD
     allTimeViewedPages.length
     >= totalPages"}
     
-    Decision -->|YES| Reset[Reset Array to []]
+    Decision -->|YES| Reset["Reset Array to empty"]
     Decision -->|NO| Continue[Continue Tracking]
     
     style Start fill:#e3f2fd,stroke:#01579b,stroke-width:2px,color:#000
