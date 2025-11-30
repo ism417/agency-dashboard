@@ -117,10 +117,11 @@ flowchart TD
     ClerkCheck -->|Not Authenticated| SignIn[Redirect to /sign-in]
     ClerkCheck -->|Authenticated| DashAccess[Dashboard Access Granted]
     
-    style User fill:#e3f2fd,color:#000
-    style ClerkCheck fill:#fff3e0,color:#000
-    style SignIn fill:#ffebee,color:#000
-    style DashAccess fill:#e8f5e9,color:#000
+    style User fill:#e3f2fd,stroke:#01579b,stroke-width:2px,color:#000
+    style AccessDash fill:#e3f2fd,stroke:#01579b,stroke-width:2px,color:#000
+    style ClerkCheck fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#000
+    style SignIn fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#000
+    style DashAccess fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#000
 ```
 
 ### 2. Contact Viewing Flow (with Rate Limiting)
@@ -151,16 +152,16 @@ flowchart TD
     • pagination
     • tracking"]
     
-    style Start fill:#e3f2fd,color:#000
-    style API fill:#f3e5f5,color:#000
-    style GetUsage fill:#fff3e0,color:#000
-    style Parse fill:#e8f5e9,color:#000
-    style CheckPage fill:#fff9c4,color:#000
-    style CheckLimit fill:#fff9c4,color:#000
-    style Error429 fill:#ffebee,color:#000
-    style Update fill:#e1f5fe,color:#000
-    style Fetch fill:#f3e5f5,color:#000
-    style Return fill:#e8f5e9,color:#000
+    style Start fill:#e3f2fd,stroke:#01579b,stroke-width:2px,color:#000
+    style API fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#000
+    style GetUsage fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#000
+    style Parse fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#000
+    style CheckPage fill:#fff9c4,stroke:#f57f17,stroke-width:2px,color:#000
+    style CheckLimit fill:#fff9c4,stroke:#f57f17,stroke-width:2px,color:#000
+    style Error429 fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#000
+    style Update fill:#e1f5fe,stroke:#01579b,stroke-width:2px,color:#000
+    style Fetch fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#000
+    style Return fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#000
 ```
 
 ### 3. Data Reset Flow
@@ -175,10 +176,10 @@ flowchart TD
     Decision -->|YES| Reset[Reset Array to []]
     Decision -->|NO| Continue[Continue Tracking]
     
-    style Start fill:#e3f2fd,color:#000
-    style Decision fill:#fff9c4,color:#000
-    style Reset fill:#ffebee,color:#000
-    style Continue fill:#e8f5e9,color:#000
+    style Start fill:#e3f2fd,stroke:#01579b,stroke-width:2px,color:#000
+    style Decision fill:#fff9c4,stroke:#f57f17,stroke-width:2px,color:#000
+    style Reset fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#000
+    style Continue fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#000
 ```
 
 ---
